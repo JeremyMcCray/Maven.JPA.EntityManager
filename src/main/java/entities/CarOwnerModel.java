@@ -1,8 +1,15 @@
 package entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class CarOwnerModel {
 
+    @Id
     Long id;
+
+
     String first_name;
     String last_name;
     String email;

@@ -1,7 +1,7 @@
 package services;
 
 import entities.CarModel;
-import entities.CarOwnerModel;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -56,6 +56,30 @@ public class CarService {
 
     }
 
+
+    public void update(Long id, CarModel carModel){
+        em.getTransaction().begin();
+
+        CarModel persistCar = em.find(CarModel.class,id);
+        persistCar.setMake(carModel.getMake());
+        persistCar.setColor(carModel.getColor());
+        persistCar.setModel(carModel.getModel());
+        persistCar.setYear(carModel.getYear());
+        persistCar.setVin(carModel.getVin());
+        em.merge(persistCar);
+        em.getTransaction().commit();
+
+    }
+
+
+    public void delete(Long id){
+        CarModel carModel = em.find(CarModel.class,id);
+        if(carModel  != null){
+            em.getTransaction().begin();
+            em.remove(carModel);
+            em.getTransaction().commit();
+        }
+    }
 
 
 }

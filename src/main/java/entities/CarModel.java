@@ -1,7 +1,14 @@
 package entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class CarModel {
+
+    @Id
     Long id;
+
     String make;
     String model;
     Long Year;
